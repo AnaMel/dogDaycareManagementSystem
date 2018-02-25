@@ -24,9 +24,25 @@ class Schedule extends React.Component {
     scheduleAppointment(e) {
         e.preventDefault();
 
+        let month = this.state.selectedDate.getUTCMonth() + 1; 
+        let day = this.state.selectedDate.getUTCDate();
+        let year = this.state.selectedDate.getUTCFullYear();
+        let converteddate = month + "/" + day + "/" + year;
+
+
         const appointment = {
             dog: this.state.selectedDog,
-            date: this.state.selectedDate.toString()
+            date: converteddate,
+            activities: [
+                {
+                    todo: 'poop',
+                    completed: false
+                },
+                {
+                    todo: 'food',
+                    completed: false
+                }
+            ]
         }
         console.log(appointment);
 

@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Dog from './dogrecord';
 import Schedule from './schedule';
+import Activities  from './activities';
 import { 
   BrowserRouter as Router, 
   Route, Link } from 'react-router-dom';
@@ -104,11 +105,13 @@ import {
         if(this.state.loggedIn === true) {
           return(
             <Router>
-              <div>
-                <Link to="/doggies">Doggies</Link>
-                <Link to="/schedule">Schedule</Link>
+              <div className="navigation">
+                <Link to="/doggies" className="navItem">Doggies</Link>
+                <Link to="/schedule" className="navItem">Schedule</Link>
+                <Link to="/activities" className="navItem">Track Daily Activities</Link>
                 <Route path="/doggies" component={Dog}/>
                 <Route path="/schedule" component={Schedule}/>
+                <Route path="/activities" component={Activities}/>
               </div>
             </Router>
           )
