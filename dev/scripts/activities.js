@@ -19,7 +19,8 @@ class Activities extends React.Component {
             date: currentdate,
             tomorrow: tomorrow,
             appointments: [],
-            activities: []
+            activities: [],
+            
         }
         // this.handleChange = this.handleChange().bind(this);
         this.toggleCompleted = this.toggleCompleted.bind(this);
@@ -34,6 +35,7 @@ class Activities extends React.Component {
 
 
     toggleCompleted(todoKey,appointmentKey) {
+
 
         const todoToUpdate = this.state.activities.find((activity) => {
            return activity.key === todoKey;

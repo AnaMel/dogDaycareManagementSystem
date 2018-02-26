@@ -25,11 +25,13 @@ import {
         createEmail: '',
         createPassword: '',
         loginEmail: '',
-        loginPassword: ''
+        loginPassword: '',
+        loggedIn: false
       }
       this.handleChange = this.handleChange.bind(this);
       this.createUser = this.createUser.bind(this);
       this.signIn = this.signIn.bind(this);
+      this.signOut = this.signOut.bind(this);
     }
   
     handleChange(event, field) {
@@ -77,25 +79,34 @@ import {
       }
     }
   
+    signOut() {
+      firebase.auth().signOut().then(function(success) {
+        console.log('Signed out!')
+      }, function(error) {
+        console.log(error);
+      });
+    }
+
     renderForms() {
       if(this.state.loggedIn === false) {
         return (
-          <div>
-            <div className="create-user">
+          <div className="logInForm">
+            {/* <div className="create-user">
               <form onSubmit={(event) => this.createUser(event)}>
                 <input type="text" value = {this.state.createEmail} placeholder="Please enter your e-mail address" onChange={(event) => this.handleChange(event, "createEmail")} />
                 <input type="password" value = {this.state.createPassword} placeholder="Please enter your desired password" onChange={(event) => this.handleChange(event, "createPassword")} />
                 <button>Create User</button>
               </form>
+            </div> */}
+            <div className="signIn">
+              <form onSubmit={(event) => this.signIn(event)}>
+                <h1>Welcome to Dog Day Care</h1>
+                <input type="text" placeholder="E-mail address" onChange={(event) => this.handleChange(event, "loginEmail")} />
+                <input type="password" placeholder="Password" onChange={(event) => this.handleChange(event, "loginPassword")} />
+                <button>Login</button>
+              </form>
             </div>
-            <div className="sign-in">
-            <form onSubmit={(event) => this.signIn(event)}>
-              <input type="text" placeholder="Please enter your e-mail address" onChange={(event) => this.handleChange(event, "loginEmail")} />
-              <input type="password" placeholder="Please enter your desired password" onChange={(event) => this.handleChange(event, "loginPassword")} />
-              <button>Login</button>
-            </form>
           </div>
-        </div>
         )
       }
       else {return null}
@@ -104,6 +115,9 @@ import {
     renderLogin() {
         if(this.state.loggedIn === true) {
           return(
+            <div className='sign-out'>
+            <button onClick={this.signOut}>Sign Out</button>
+          
             <Router>
               <div className="navigation">
                 <Link to="/doggies" className="navItem">Doggies</Link>
@@ -114,6 +128,8 @@ import {
                 <Route path="/activities" component={Activities}/>
               </div>
             </Router>
+            </div>
+
           )
         }
         else {return null}
