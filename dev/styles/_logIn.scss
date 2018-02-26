@@ -24,15 +24,19 @@
     align-items: center;
 
     @media (max-width: 940px) {
+        flex-basis: 600px;
         padding: 50px;
     }
     
     /* Landscape phone to portrait tablet */
     @media (max-width: 768px) {
+        flex-basis: 400px;
     }
     
     /* Landscape phones and down */
     @media (max-width: 480px) {
+        flex-basis: 300px;
+        padding: 30px;
     }
 
     form {
@@ -41,6 +45,7 @@
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
+
         h1 {
             font-family: 'Quattrocento Sans', sans-serif;
             font-weight: 700;
@@ -49,7 +54,14 @@
 
         input {
             min-width: 450px;
+            @media (max-width: 940px) {
+                min-width: 350px;
+            }
+            @media (max-width: 480px) {
+                min-width: 275px;
+            }
         }
+
         button {
             min-width: 150px;
             align-self: flex-end;
@@ -59,6 +71,9 @@
             &:hover {
                 background-color: whitesmoke;
                 color: rgba(59, 68, 69, 0.8);
+            }
+            @media (max-width: 480px) {
+                min-width: 100px;
             }
             
         }

@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import Dog from './dogrecord';
 import Schedule from './schedule';
 import Activities  from './activities';
+import Users  from './users';
 import { 
   BrowserRouter as Router, 
   Route, Link } from 'react-router-dom';
@@ -22,14 +23,11 @@ import {
     constructor() {
       super();
       this.state = {
-        createEmail: '',
-        createPassword: '',
         loginEmail: '',
         loginPassword: '',
         loggedIn: false
       }
       this.handleChange = this.handleChange.bind(this);
-      this.createUser = this.createUser.bind(this);
       this.signIn = this.signIn.bind(this);
       this.signOut = this.signOut.bind(this);
     }
@@ -38,32 +36,6 @@ import {
       const newState = Object.assign({}, this.state);
       newState[field] = event.target.value;
       this.setState(newState);
-    }
-  
-
-    // Custom function to create a user record and push it to firebase
-    createUser(event) {
-      event.preventDefault();
-
-      const email = this.state.createEmail;
-      const password = this.state.createPassword;
-  
-      firebase.auth().createUserWithEmailAndPassword(email, password)
-        .catch((error) => console.log(error.code, error.message));
-
-
-      // const user = {
-      //   email: this.state.createEmail,
-      //   password: this.state.createPassword
-      // }
-
-      // const dbref = firebase.database().ref('/users');
-      // dbref.push(user);
-
-      this.setState ({
-        createEmail: '',
-        createPassword: ''
-      });
     }
 
     signIn(event) {
@@ -91,13 +63,6 @@ import {
       if(this.state.loggedIn === false) {
         return (
           <div className="logInForm">
-            {/* <div className="create-user">
-              <form onSubmit={(event) => this.createUser(event)}>
-                <input type="text" value = {this.state.createEmail} placeholder="Please enter your e-mail address" onChange={(event) => this.handleChange(event, "createEmail")} />
-                <input type="password" value = {this.state.createPassword} placeholder="Please enter your desired password" onChange={(event) => this.handleChange(event, "createPassword")} />
-                <button>Create User</button>
-              </form>
-            </div> */}
             <div className="signIn">
               <form onSubmit={(event) => this.signIn(event)}>
                 <h1>Welcome to Dog Day Care</h1>
@@ -120,9 +85,11 @@ import {
           
             <Router>
               <div className="navigation">
+                <Link to="/users" className="navItem">Users</Link>
                 <Link to="/doggies" className="navItem">Doggies</Link>
                 <Link to="/schedule" className="navItem">Schedule</Link>
                 <Link to="/activities" className="navItem">Track Daily Activities</Link>
+                <Route path="/users" component={Users}/>
                 <Route path="/doggies" component={Dog}/>
                 <Route path="/schedule" component={Schedule}/>
                 <Route path="/activities" component={Activities}/>
