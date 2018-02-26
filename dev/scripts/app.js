@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import Dog from './dogrecord';
 import Schedule from './schedule';
 import Activities  from './activities';
-import Users  from './users';
+import Users from './users';
 import { 
   BrowserRouter as Router, 
   Route, Link } from 'react-router-dom';
@@ -85,16 +85,18 @@ import {
                 <button className="signOutButton" onClick={this.signOut}>Sign Out</button>
               </div>
               <Router>
-                <nav className="navigation">
-                  <Link to="/users" className="navItem">Add New Users</Link>
-                  <Link to="/doggies" className="navItem">Add New Doggies</Link>
-                  <Link to="/schedule" className="navItem">Manage Schedule</Link>
-                  <Link to="/activities" className="navItem">Track Daily Activities</Link>
+                <div>
+                  <nav className="navigation">
+                    <Link to="/users" className="navItem">Add New Users</Link>
+                    <Link to="/doggies" className="navItem">Add New Doggies</Link>
+                    <Link to="/schedule" className="navItem">Manage Schedule</Link>
+                    <Link to="/activities" className="navItem">Track Daily Activities</Link>
+                  </nav>
                   <Route path="/users" component={Users}/>
                   <Route path="/doggies" component={Dog}/>
                   <Route path="/schedule" component={Schedule}/>
                   <Route path="/activities" component={Activities}/>
-                </nav>
+                </div>
               </Router>
            </main>
 

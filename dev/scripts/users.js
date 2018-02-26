@@ -7,15 +7,17 @@ class Users extends React.Component {
             createEmail: '',
             createPassword: ''            
         }
+        this.handleChange = this.handleChange.bind(this);
         this.createUser = this.createUser.bind(this);
         
     }
 
-    handleChange(e){
-        this.setState({
-            [e.target.id]: e.target.value
-        })
-    }
+    handleChange(event, field) {
+        const newState = Object.assign({}, this.state);
+        newState[field] = event.target.value;
+        this.setState(newState);
+      }
+    
  
     createUser(event) {
         event.preventDefault();
@@ -34,13 +36,13 @@ class Users extends React.Component {
 
     render () {
         return (
-           <div className="create-user">
+           <section className="create-user">
               <form onSubmit={(event) => this.createUser(event)}>
-                <input type="text" value = {this.state.createEmail} placeholder="Please enter your e-mail address" onChange={(event) => this.handleChange(event, "createEmail")} />
-                <input type="password" value = {this.state.createPassword} placeholder="Please enter your desired password" onChange={(event) => this.handleChange(event, "createPassword")} />
+                <input type="text" value = {this.state.createEmail} placeholder="Please enter e-mail address" onChange={(event) => this.handleChange(event, "createEmail")} />
+                <input type="password" value = {this.state.createPassword} placeholder="Please enter password" onChange={(event) => this.handleChange(event, "createPassword")} />
                 <button>Create User</button>
               </form>
-            </div>
+            </section>
         )
     }
 }

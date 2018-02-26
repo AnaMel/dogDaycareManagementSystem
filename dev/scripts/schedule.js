@@ -35,12 +35,24 @@ class Schedule extends React.Component {
             date: converteddate,
             activities: [
                 {
-                    todo: 'poop',
-                    completed: false
+                    todo: 'first break',
+                    completed: false,
+                    timestamp: ''
                 },
                 {
-                    todo: 'food',
-                    completed: false
+                    todo: 'second break',
+                    completed: false,
+                    timestamp: ''
+                },
+                {
+                    todo: 'lunch',
+                    completed: false,
+                    timestamp: ''
+                },
+                {
+                    todo: 'sleep',
+                    completed: false,
+                    timestamp: ''
                 }
             ]
         }
@@ -58,10 +70,18 @@ class Schedule extends React.Component {
         this.setState({ selectedDate: day });
       }
 
-    selectDog(selection) {
-        this.setState({
-            selectedDog: selection
-        });
+    selectDog(e,selection) {
+        if(e.target.checked === true){
+            this.setState({
+                selectedDog: selection
+            });
+            console.log(selection);
+        }
+        else {
+            this.setState({
+                selectedDog: ''
+            });
+        }
     }
 
     render() {
@@ -70,26 +90,30 @@ class Schedule extends React.Component {
                 <form onSubmit={(event) => this.scheduleAppointment(event)}>
                     <div>
                         <h2>Select a date</h2>
+                        <Calender handleDayClick={this.handleDayClick} selectedDate= {this.state.selectedDate}/>
                     </div>
-                    <Calender handleDayClick={this.handleDayClick} selectedDate= {this.state.selectedDate}/>
                     <div>
                         <h2>Select a dog</h2>
-                    </div>
-                    <div className="listOfDogs">
-                        <ul>
-                            {this.state.existingDogs.map((existingDog, i) => {
-                                return (
-                                    <li key={existingDog.key}>{existingDog.dogName}
-                                        <input type="checkbox" value="" onChange={() => this.selectDog(existingDog.dogName)}/>
-                                    </li>                             
-                                )
-                            })}
-                        </ul>
+                        <div className="listOfDogs">
+                            <ul>
+                                {this.state.existingDogs.map((existingDog, i) => {
+                                    return (
+                                        <li key={existingDog.key}>{existingDog.dogName}
+                                            <label className="myCheckbox">
+                                                {/* <input type="checkbox" onChange={() => {if (this.checked!=null) {this.selectDog(existingDog.dogName)}}}/> */}
+                                                <input type="checkbox" onChange={(e) => {this.selectDog(e,existingDog.dogName)}}/>
+                                                <span></span>
+                                            </label>
+                                        </li>                             
+                                    )
+                                })}
+                            </ul>
+                        </div>
                     </div>
                     <div>
                         <h2>Schedule visit</h2>
+                        <button>Schedule</button>
                     </div>
-                    <button>Schedule</button>
                 </form>
             </section>
         )

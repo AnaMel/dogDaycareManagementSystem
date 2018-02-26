@@ -37,20 +37,23 @@ class Dog extends React.Component {
 
     render() {
         return (
-            <div>
+            <section className="dogRecords">
                 <form onSubmit={(event) => this.createDog(event)}>
                     <input type="text" value = {this.state.name} placeholder="Dog Name" onChange={this.handleChange} id="name"/>
                     <input type="text" value = {this.state.breed} placeholder="Dog Breed" onChange={this.handleChange} id="breed"/>
                     <button>Create Dog Record</button>
                 </form>
-                {this.state.existingDogs.map((existingDog, i) => {
-                    // console.log(existingDog.dogName);
-                    return (
-                        <p key={existingDog.key}>{existingDog.dogName}
-                        </p>
-                    )
-                })}
-            </div>    
+                <h1>Active Clients</h1>
+                <ul>
+                    {this.state.existingDogs.map((existingDog, i) => {
+                        // console.log(existingDog.dogName);
+                        return (
+                            <li key={existingDog.key}>{existingDog.dogName} - {existingDog.dogBreed}
+                            </li>
+                        )
+                    })}
+                </ul>
+            </section>    
         )
     }
 
