@@ -68,16 +68,27 @@ class Schedule extends React.Component {
         return (
             <section className="schedule">
                 <form onSubmit={(event) => this.scheduleAppointment(event)}>
+                    <div>
+                        <h2>Select a date</h2>
+                    </div>
                     <Calender handleDayClick={this.handleDayClick} selectedDate= {this.state.selectedDate}/>
-                    {this.state.existingDogs.map((existingDog, i) => {
-                        return (
-                            <div className="listOfDogs">
-                                <p key={existingDog.key}>{existingDog.dogName}
-                                    <input type="checkbox" value="" onChange={() => this.selectDog(existingDog.dogName)}/>
-                                </p>
-                            </div>
-                        )
-                    })}
+                    <div>
+                        <h2>Select a dog</h2>
+                    </div>
+                    <div className="listOfDogs">
+                        <ul>
+                            {this.state.existingDogs.map((existingDog, i) => {
+                                return (
+                                    <li key={existingDog.key}>{existingDog.dogName}
+                                        <input type="checkbox" value="" onChange={() => this.selectDog(existingDog.dogName)}/>
+                                    </li>                             
+                                )
+                            })}
+                        </ul>
+                    </div>
+                    <div>
+                        <h2>Schedule visit</h2>
+                    </div>
                     <button>Schedule</button>
                 </form>
             </section>
