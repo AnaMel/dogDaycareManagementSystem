@@ -10,6 +10,7 @@ body {
     margin: 0;
     padding: 0;
     font-size: 1.6rem;
+    font-family: 'Quattrocento Sans', sans-serif;
 }
 
 h1, h2, h3, h4, p, a, ul {
@@ -27,7 +28,28 @@ h1 {
     }
 }
 
+a {
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: whitesmoke;
+    &:focus,
+    &:visited {
+        color: whitesmoke;
+    }
+}
+
 img {
     width: 100%;
     display: block;
+}
+
+input[type="text"],
+input[type="password"],
+button {
+    -moz-appearance: none;
+    -webkit-appearance: none;   
+    border: none;
+    padding: 20px 15px;
+    transition: 0.3s;
 }

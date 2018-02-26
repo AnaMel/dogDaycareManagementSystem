@@ -1,14 +1,5 @@
 @import '_setup.scss';
 @import '_logIn.scss';
+@import '_navigation.scss';
 @import '_dayPicker.scss';
-
-
-.navigation {
-    margin: 100px;
-}
-
-.navItem {
-    padding: 10px;
-    margin: 25px;
-    background-color: lightblue;
-}
+@import '_schedule.scss';

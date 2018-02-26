@@ -47,7 +47,7 @@
         align-items: center;
 
         h1 {
-            font-family: 'Quattrocento Sans', sans-serif;
+            font-family: 'Quattrocento', serif;
             font-weight: 700;
             color: whitesmoke;
         }
@@ -81,15 +81,24 @@
 
 }
 
+.signOutButton {
+    position: fixed;
+    right: 15px;
+    top: 15px;
+    min-width: 100px;
+    border-radius: 5px;
+    background-color: #ee7d3b;
+    color: whitesmoke;
+    transition: all 0.5s;
+    &:hover {
+        background-color: #c53535
+    }
 
-input,
-button {
-    -moz-appearance: none;
-    -webkit-appearance: none;   
-    border: none;
-    padding: 20px 15px;
-    transition: 0.3s;
 }
+
+
+
+
 
 @keyframes BackgroundGradient {
     0% {

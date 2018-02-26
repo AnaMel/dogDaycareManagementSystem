@@ -80,22 +80,23 @@ import {
     renderLogin() {
         if(this.state.loggedIn === true) {
           return(
-            <div className='sign-out'>
-            <button onClick={this.signOut}>Sign Out</button>
-          
-            <Router>
-              <div className="navigation">
-                <Link to="/users" className="navItem">Users</Link>
-                <Link to="/doggies" className="navItem">Doggies</Link>
-                <Link to="/schedule" className="navItem">Schedule</Link>
-                <Link to="/activities" className="navItem">Track Daily Activities</Link>
-                <Route path="/users" component={Users}/>
-                <Route path="/doggies" component={Dog}/>
-                <Route path="/schedule" component={Schedule}/>
-                <Route path="/activities" component={Activities}/>
+            <main>
+              <div className='sign-out'>
+                <button className="signOutButton" onClick={this.signOut}>Sign Out</button>
               </div>
-            </Router>
-            </div>
+              <Router>
+                <nav className="navigation">
+                  <Link to="/users" className="navItem">Add New Users</Link>
+                  <Link to="/doggies" className="navItem">Add New Doggies</Link>
+                  <Link to="/schedule" className="navItem">Manage Schedule</Link>
+                  <Link to="/activities" className="navItem">Track Daily Activities</Link>
+                  <Route path="/users" component={Users}/>
+                  <Route path="/doggies" component={Dog}/>
+                  <Route path="/schedule" component={Schedule}/>
+                  <Route path="/activities" component={Activities}/>
+                </nav>
+              </Router>
+           </main>
 
           )
         }
