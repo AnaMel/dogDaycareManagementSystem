@@ -24,35 +24,32 @@ class Dog extends React.Component {
             dogName: this.state.name,
             dogBreed: this.state.breed
         }
-
         const dbref = firebase.database().ref('/dogs');
 	    dbref.push(dog);
-
         this.setState({
             name: '',
             breed: ''
         });
     }
 
-
     render() {
         return (
             <section className="dogRecords">
-                <form onSubmit={(event) => this.createDog(event)}>
+                <form className="appForm" onSubmit={(event) => this.createDog(event)}>
                     <input type="text" value = {this.state.name} placeholder="Dog Name" onChange={this.handleChange} id="name"/>
                     <input type="text" value = {this.state.breed} placeholder="Dog Breed" onChange={this.handleChange} id="breed"/>
                     <button>Create Dog Record</button>
                 </form>
                 <h1>Active Clients</h1>
-                <ul>
+                <div className="clients">
                     {this.state.existingDogs.map((existingDog, i) => {
-                        // console.log(existingDog.dogName);
                         return (
-                            <li key={existingDog.key}>{existingDog.dogName} - {existingDog.dogBreed}
-                            </li>
+                            <div className="clientContainer" key={existingDog.key}>
+                                <p>{existingDog.dogName} - {existingDog.dogBreed}</p>
+                            </div>
                         )
                     })}
-                </ul>
+                </div>
             </section>    
         )
     }

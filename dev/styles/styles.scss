@@ -1,8 +1,9 @@
-@import '_setup.scss';
-@import '_logIn.scss';
-@import '_navigation.scss';
-@import '_dayPicker.scss';
-@import '_schedule.scss';
-@import '_userManagement.scss';
-@import '_dogManagement.scss';
-@import '_activities.scss'
+@import 'partials/_setup.scss';
+@import 'partials/_general.scss';
+@import 'partials/_logIn.scss';
+@import 'partials/_navigation.scss';
+@import 'partials/_dayPicker.scss';
+@import 'partials/_schedule.scss';
+@import 'partials/_userManagement.scss';
+@import 'partials/_dogManagement.scss';
+@import 'partials/_activities.scss'

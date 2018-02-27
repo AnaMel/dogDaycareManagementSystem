@@ -1,0 +1,40 @@
+.dogRecords{    
+    form {
+        background-color:#f0e898;
+    }
+    ul {
+        -moz-column-count: 4;
+        -moz-column-gap: 50px;
+        -webkit-column-count: 42;
+        -webkit-column-gap: 50px;
+        column-count: 4;
+        column-gap: 50px;
+    }
+
+    h1 {
+        text-align: center;
+        margin: 25px 0;
+    }
+}
+
+.clients {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.clientContainer {
+    padding: 30px;
+    background-color: #f0e898;
+    box-shadow: 0 1px 8px 0 rgba(0,0,0,.2), 0 3px 4px 0 rgba(0,0,0,.14), 0 3px 3px -2px rgba(0,0,0,.12);
+    flex-basis: 275px;
+    margin-bottom: 25px;
+    text-align: center;
+    p {
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+}

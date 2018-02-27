@@ -36,13 +36,13 @@ class Users extends React.Component {
 
     render () {
         return (
-           <section className="create-user">
-              <form onSubmit={(event) => this.createUser(event)}>
-                <input type="text" value = {this.state.createEmail} placeholder="Please enter e-mail address" onChange={(event) => this.handleChange(event, "createEmail")} />
-                <input type="password" value = {this.state.createPassword} placeholder="Please enter password" onChange={(event) => this.handleChange(event, "createPassword")} />
-                <button>Create User</button>
-              </form>
-            </section>
+          <section className="create-user">
+            <form className="appForm" onSubmit={(event) => this.createUser(event)}>
+              <input type="text" value = {this.state.createEmail} placeholder="Please enter e-mail address" onChange={(event) => this.handleChange(event, "createEmail")} />
+              <input type="password" value = {this.state.createPassword} placeholder="Please enter password" onChange={(event) => this.handleChange(event, "createPassword")} />
+              <button>Create User</button>
+            </form>
+          </section>
         )
     }
 }

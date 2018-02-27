@@ -42,7 +42,6 @@ import {
       event.preventDefault();
       const email = this.state.loginEmail;
       const password = this.state.loginPassword;
-  
       firebase.auth().signInWithEmailAndPassword(email, password)
         .then((success) => {
           console.log(`Logged in as ${success.email}`);
@@ -76,41 +75,39 @@ import {
       }
       else {return null}
     }
-
     renderLogin() {
-        if(this.state.loggedIn === true) {
-          return(
-            <main>
-              <div className='sign-out'>
-                <button className="signOutButton" onClick={this.signOut}>Sign Out</button>
+      if(this.state.loggedIn === true) {
+        return(
+          <main>
+            <div className='sign-out'>
+              <button className="signOutButton" onClick={this.signOut}>Sign Out</button>
+            </div>
+            <Router>
+              <div>
+                <nav className="navigation">
+                  <Link to="/users" className="navItem">Add New Users</Link>
+                  <Link to="/doggies" className="navItem">Add New Doggies</Link>
+                  <Link to="/schedule" className="navItem">Manage Schedule</Link>
+                  <Link to="/activities" className="navItem">Track Daily Activities</Link>
+                </nav>
+                <Route path="/users" component={Users}/>
+                <Route path="/doggies" component={Dog}/>
+                <Route path="/schedule" component={Schedule}/>
+                <Route path="/activities" component={Activities}/>
               </div>
-              <Router>
-                <div>
-                  <nav className="navigation">
-                    <Link to="/users" className="navItem">Add New Users</Link>
-                    <Link to="/doggies" className="navItem">Add New Doggies</Link>
-                    <Link to="/schedule" className="navItem">Manage Schedule</Link>
-                    <Link to="/activities" className="navItem">Track Daily Activities</Link>
-                  </nav>
-                  <Route path="/users" component={Users}/>
-                  <Route path="/doggies" component={Dog}/>
-                  <Route path="/schedule" component={Schedule}/>
-                  <Route path="/activities" component={Activities}/>
-                </div>
-              </Router>
-           </main>
-
-          )
-        }
-        else {return null}
+            </Router>
+          </main>
+        )
+      }
+      else {return null}
     }
 
     render() {
       return (
           <div>
-              {this.renderForms()}
-              {this.renderLogin()}
-            </div>
+            {this.renderForms()}
+            {this.renderLogin()}
+          </div>
       )
     }
 
@@ -123,7 +120,6 @@ import {
           }
       })
     }
-
   } 
 
   ReactDOM.render(<App />, document.getElementById('app'))

@@ -23,13 +23,10 @@ class Schedule extends React.Component {
 
     scheduleAppointment(e) {
         e.preventDefault();
-
         let month = this.state.selectedDate.getUTCMonth() + 1; 
         let day = this.state.selectedDate.getUTCDate();
         let year = this.state.selectedDate.getUTCFullYear();
         let converteddate = month + "/" + day + "/" + year;
-
-
         const appointment = {
             dog: this.state.selectedDog,
             date: converteddate,
@@ -56,11 +53,8 @@ class Schedule extends React.Component {
                 }
             ]
         }
-        console.log(appointment);
-
         const dbref = firebase.database().ref('/appointment');
 	    dbref.push(appointment);
-
         this.setState({
             selectedDog: '',
             selectedDate: undefined
@@ -87,7 +81,7 @@ class Schedule extends React.Component {
     render() {
         return (
             <section className="schedule">
-                <form onSubmit={(event) => this.scheduleAppointment(event)}>
+                <form className="appForm" onSubmit={(event) => this.scheduleAppointment(event)}>
                     <div>
                         <h2>Select a date</h2>
                         <Calender handleDayClick={this.handleDayClick} selectedDate= {this.state.selectedDate}/>
@@ -100,7 +94,6 @@ class Schedule extends React.Component {
                                     return (
                                         <li key={existingDog.key}>{existingDog.dogName}
                                             <label className="myCheckbox">
-                                                {/* <input type="checkbox" onChange={() => {if (this.checked!=null) {this.selectDog(existingDog.dogName)}}}/> */}
                                                 <input type="checkbox" onChange={(e) => {this.selectDog(e,existingDog.dogName)}}/>
                                                 <span></span>
                                             </label>

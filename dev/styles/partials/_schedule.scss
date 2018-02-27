@@ -1,0 +1,47 @@
+.schedule {
+    form {
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: flex-start;
+        background-color: #8fb795;
+        >div {
+            background-color: white;
+            box-shadow: 0 1px 8px 0 rgba(0,0,0,.2), 0 3px 4px 0 rgba(0,0,0,.14), 0 3px 3px -2px rgba(0,0,0,.12);
+            margin: 5px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px;
+            min-height: 350px;
+            border-radius: 5px;
+            min-width: 350px;
+            @media (max-width: 480px) {
+                padding: 20px;
+                min-width: 300px;
+                min-height: 300px;
+            }
+        }
+        button {
+            margin-top: 50px;
+            min-height: 75px;
+        }
+    }
+}
+
+.myCheckbox input {
+    position: relative;
+    z-index: -9999;
+}
+
+.myCheckbox span {
+    width: 20px;
+    height: 20px;
+    display: block;
+    background-image: url("./paw-print.png");
+    background-size: contain;
+}
+
+.myCheckbox input:checked + span {
+    background: url("./dog-checked.png");
+    background-size: contain;
+}
